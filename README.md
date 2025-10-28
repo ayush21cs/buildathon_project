@@ -1,14 +1,14 @@
 '''installing  pygame, tkinter and customtkinter through pip install command in CMD is REQUIRED'''
-'''RECOMMENDED RESOLUTION IS 1920x1080 FOR BEST RESULTS'''
+'''RECOMMENDED RESOLUTION IS 1920x1080 OR ATLEAST MORE THAN THAT FOR BEST RESULTS'''
 try:
     import pygame; pygame.init()
     import tkinter as tk
     import customtkinter as ctk
-    import math
     import random
 except:
     for repeat in range(10):
         print("installing  pygame, tkinter and customtkinter through pip install command in CMD is REQUIRED")
+ASK=False
 height=width=850
 TXTSZ = 40
 BSZ = 80
@@ -33,82 +33,84 @@ clock = pygame.time.Clock()
 running = True 
 run= run1 = True
 a = tk.Tk()
-def command():
-    global name_input, age_input, gender_input, blood_group_input, nets, run
-    name_input = entry.get()
-    age_input = entry_1.get()
-    gender_input = entry_2.get()
-    blood_group_input = entry_3.get()
-    nets = [name_input, age_input, gender_input, blood_group_input]
-    if name_input == "" or age_input == "" or gender_input == "" or blood_group_input == "":    warn.config(text="PLEASE FILL ALL INFORMATION")
-    elif not (name_input.isupper() and gender_input.isupper() and blood_group_input.isupper()): warn.config(text="ENTER IN CAPITAL ONLY")
-    elif len(name_input) <= 2:                                                                  warn.config(text="NAME IS TOO SMALL")
-    elif int(age_input) <= 10:                                                                  warn.config(text="AGE TOO SMALL, CONSULT AN ADULT IF NEEDED",width=50)
-    elif int(age_input) >= 130:                                                                 warn.config(text="THAT AGE IS NOT POSSIBLE, ENTER CORRECT AGE",width=50)
-    elif gender_input not in ("MALE","FEMALE","OTHERS"):                                        warn.config(text="SAY 'OTHERS' IF NOT MALE OR FEMALE",width=50)
-    elif blood_group_input not in ("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"):           warn.config(text="NOT CORRECT BLOOD TYPE")
-    else:
-        run = True
-        a.quit()
-        a.destroy()
-a.geometry("350x450")
-a.title("Enter Login Information:")
-Name = tk.Label(a, text="Name:", width=20, height=3)
-entry = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
-Age = tk.Label(a, text="Age:", width=20, height=3)
-entry_1 = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
-Gender = tk.Label(a, text="Gender:", width=20, height=3)
-entry_2 = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
-Blood_Group = tk.Label(a, text="Blood Group:", width=20, height=3)
-entry_3 = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
-button = tk.Button(a, text="Confirm", command=command)
-warn = tk.Label(a, text="", width=30, height=1, fg="red")
-entries = [Name, entry, Age, entry_1, Gender, entry_2, Blood_Group, entry_3]
-for ent in entries:
-    ent.pack()
-button.pack()
-warn.pack()
-a.mainloop()
-if run == True:
-    xyz = ctk.CTk() 
-    xyz.title('BMI calculator') 
-    xyz.geometry('300x220') 
-    xyz.maxsize(300,200) 
-    xyz.minsize(300,200) 
-    xyzl = ctk.CTkLabel(xyz,text='BMI calulator',font=('Jokerman',30)) 
-    xyzl.place(x=60,y=0) 
-    weight = ctk.CTkLabel(xyz,text='Enter Your Weight(Kg):') 
-    weight.place(x=20,y=60) 
-    heightC = ctk.CTkLabel(xyz,text='Enter Your Height(m):') 
-    heightC.place(x=20,y=90) 
-    entryw = ctk.CTkEntry(xyz,width=70,height=20) 
-    entryw.place(x=150,y=60) 
-    entryh = ctk.CTkEntry(xyz,width=70,height=20) 
-    entryh.place(x=150,y=90) 
-    result_label = ctk.CTkLabel(xyz, text="")
-    result_label.place(x=70, y=180)
-    def btnn():
-        global run1, valueh, valuew
-        try:
-            valuew = float(entryw.get())
-            valueh = float(entryh.get())
-            if 25>valuew or 1800<=valuew: result_label.configure(text="Specified weight is not normal"); return
-            elif 0.5>valueh or 2.72<valueh: result_label.configure(text="Specified height is not possible"); return
-            run1 = True
-            xyz.quit()
-            xyz.destroy()
-        except ValueError: result_label.configure(text="Enter valid numbers.")
-    btn = ctk.CTkButton(xyz,text='Confirm',height=30,width=70,command=btnn) 
-    btn.place(x=130,y=150) 
-    print()
-    xyz.mainloop()
+if ASK:
+    def command():
+        global name_input, age_input, gender_input, blood_group_input, nets, run
+        name_input = entry.get()
+        age_input = entry_1.get()
+        gender_input = entry_2.get()
+        blood_group_input = entry_3.get()
+        nets = [name_input, age_input, gender_input, blood_group_input]
+        if name_input == "" or age_input == "" or gender_input == "" or blood_group_input == "":    warn.config(text="PLEASE FILL ALL INFORMATION")
+        elif not (name_input.isupper() and gender_input.isupper() and blood_group_input.isupper()): warn.config(text="ENTER IN CAPITAL ONLY")
+        elif len(name_input) <= 2:                                                                  warn.config(text="NAME IS TOO SMALL")
+        elif int(age_input) <= 10:                                                                  warn.config(text="AGE TOO SMALL, CONSULT AN ADULT IF NEEDED",width=50)
+        elif int(age_input) >= 130:                                                                 warn.config(text="THAT AGE IS NOT POSSIBLE, ENTER CORRECT AGE",width=50)
+        elif gender_input not in ("MALE","FEMALE","OTHERS"):                                        warn.config(text="SAY 'OTHERS' IF NOT MALE OR FEMALE",width=50)
+        elif blood_group_input not in ("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"):           warn.config(text="NOT CORRECT BLOOD TYPE")
+        else:
+            run = True
+            a.quit()
+            a.destroy()
+    a.geometry("350x450")
+    a.title("Enter Login Information:")
+    Name = tk.Label(a, text="Name:", width=20, height=3)
+    entry = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
+    Age = tk.Label(a, text="Age:", width=20, height=3)
+    entry_1 = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
+    Gender = tk.Label(a, text="Gender:", width=20, height=3)
+    entry_2 = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
+    Blood_Group = tk.Label(a, text="Blood Group:", width=20, height=3)
+    entry_3 = tk.Entry(a, width=30, font=("Arial", 12), fg="blue")
+    button = tk.Button(a, text="Confirm", command=command)
+    warn = tk.Label(a, text="", width=30, height=1, fg="red")
+    entries = [Name, entry, Age, entry_1, Gender, entry_2, Blood_Group, entry_3]
+    for ent in entries:
+        ent.pack()
+    button.pack()
+    warn.pack()
+    a.mainloop()
+    if run == True:
+        xyz = ctk.CTk() 
+        xyz.title('BMI calculator') 
+        xyz.geometry('300x220') 
+        xyz.maxsize(300,200) 
+        xyz.minsize(300,200) 
+        xyzl = ctk.CTkLabel(xyz,text='BMI calulator',font=('Jokerman',30)) 
+        xyzl.place(x=60,y=0) 
+        weight = ctk.CTkLabel(xyz,text='Enter Your Weight(Kg):') 
+        weight.place(x=20,y=60) 
+        heightC = ctk.CTkLabel(xyz,text='Enter Your Height(m):') 
+        heightC.place(x=20,y=90) 
+        entryw = ctk.CTkEntry(xyz,width=70,height=20) 
+        entryw.place(x=150,y=60) 
+        entryh = ctk.CTkEntry(xyz,width=70,height=20) 
+        entryh.place(x=150,y=90) 
+        result_label = ctk.CTkLabel(xyz, text="")
+        result_label.place(x=70, y=180)
+        def btnn():
+            global run1, valueh, valuew
+            try:
+                valuew = float(entryw.get())
+                valueh = float(entryh.get())
+                if 25>valuew or 1800<=valuew: result_label.configure(text="Specified weight is not normal"); return
+                elif 0.5>valueh or 2.72<valueh: result_label.configure(text="Specified height is not possible"); return
+                run1 = True
+                xyz.quit()
+                xyz.destroy()
+            except ValueError: result_label.configure(text="Enter valid numbers.")
+        btn = ctk.CTkButton(xyz,text='Confirm',height=30,width=70,command=btnn) 
+        btn.place(x=130,y=150) 
+        print()
+        xyz.mainloop()
 BMI = round((valuew/valueh**2),2)
 ackn = {
     1:"Thanks to all my teammates for working with me and helping in designing and programming.",
-    2:"Special thanks to Mr. Sunil Kumar Gupta sir (Computer Science) and Mrs Kiran Pawar madam (Nurse),",
-    3:"for providing technologies like computer and internet for us to work on, and guidance in",
-    4:"the Main Topic of this project, that is, 'HEALTH CARE'.",
-    5:"Thanks to all the people that I have worked with while making this project. Thank you."}
+    2:"Special thanks to Mr. Sunil Kumar Gupta sir (Computer Science) and,",
+    3: "Mrs Kiran Pawar madam (Nurse),",
+    4:"for providing technologies like computer and internet for us to work on, and guidance in",
+    5:"the Main Topic of this project, that is, 'HEALTH CARE'.",
+    6:"Thanks to all the people that I have worked with while making this project. Thank you."}
 aboutinf = {
     1:"",
     2:"PROBLEM: people died because they could not get thier correct blood type on time",
@@ -150,7 +152,7 @@ underans = {
     5:"do not eat junk food, eat healthy yet calorie containing food, ",
     6:"eating oily food is unhealthy, eat food that contain fat, ",
     7:"eating non-veg is recommended, but if you are vegan, consider eating vegetables, ",
-    8:"feeling pain in random parts of body is common while being underweight, becoming fit is the only way to stop this, if the pain is very high, consider telling a doctor for a quick solution",}
+    8:"feeling pain in random parts of body is common while being underweight, becoming fit is the only way to stop this, if the pain is very high, consider telling a doctor for a quick solution, "}
 overans = {
     1:"well, eating a lot is literally the reason why most people become overweight, so eat less food, ",
     2:"don't drink softdrinks, it can hurt your lever or sugar level, it can be related to overweight, ",
@@ -158,7 +160,7 @@ overans = {
     4:"junk food contains fat and oils, so eating them is a bad habit, so dont eat them, it can solve overweight problem, ",
     5:"oily and junk food are related, so reduce oily food intake, ",
     6:"eating non-veg food is ok, but reduce it and eat vegetables, ",
-    7:"overweight can cause pain in various parts of body, if pain is too much, consult a doctor",
+    7:"overweight can cause pain in various parts of body, if pain is too much, consult a doctor, ",
     8:""}
 book1 = {"UNDER":underbook, "OVER":overbook}
 book2 = {
@@ -171,14 +173,14 @@ book2 = {
     7:"Are you physically stiff (NOT flexible)?",
     8:"Do you, by some chance, have bad posture?"}
 ans_book2 = {
-    1:"If you dont go to gym or do excercise and yoga, your physical fitness can lower, so doing little excercise at least can help a lot",
-    2:"you should not sit at one place, it can cause bad posture or bad physical health, always take short breaks in the middle,",
-    3:"standing at one place can be difficult for those who are NOT physically fit, hence, try walking or standing everyday so you can be prepared when you are forced to be standing or even walking for a long time",
-    4:"not being able to pickup normal objects means that you need to excercise your arm and hand grip strenght",
-    5:"not drinking water or sitting at one place then stretching suddenly can cause cramps, so take short breaks in between work and drink water then walk for a little bit",
-    6:"not being physically fit and doing heavy work can cause strain, muscle excercise, either legs or arm or even both is heavily required here",
-    7:"most people are not flexible because they dont do yoga, although being flexible is not a necessity, it can be good just to have it",
-    8:"having bad posture is bad, try sitting straight, have your neck straight, keep your chest straight, avoid putting shoulder more to the front (its called hunch)"}
+    1:"If you dont go to gym or do excercise and yoga, your physical fitness can lower, so doing little excercise at least can help a lot, ",
+    2:"you should not sit at one place, it can cause bad posture or bad physical health, always take short breaks in the middle, ",
+    3:"standing at one place can be difficult for those who are NOT physically fit, hence, try walking or standing everyday so you can be prepared when you are forced to be standing or even walking for a long time, ",
+    4:"not being able to pickup normal objects means that you need to excercise your arm and hand grip strenght, ",
+    5:"not drinking water or sitting at one place then stretching suddenly can cause cramps, so take short breaks in between work and drink water then walk for a little bit, ",
+    6:"not being physically fit and doing heavy work can cause strain, muscle excercise, either legs or arm or even both is heavily required here, ",
+    7:"most people are not flexible because they dont do yoga, although being flexible is not a necessity, it can be good just to have it, ",
+    8:"having bad posture is bad, try sitting straight, have your neck straight, keep your chest straight, avoid putting shoulder more to the front (its called hunch), "}
 mcq = {"Physical Fitness":book2, "Diet Control":book1}
 ans1 = ans2= ans3= ""
 prog = prog1 = prog3= dtb=n= 0
@@ -229,9 +231,9 @@ def Title():
     global button, texts, isbtn, tsz
     for btns in range(0, 5):
         draw(buttons[btns],texts[btns],isbtn[btns],tsz[btns])
-    screen.blit(pygame.font.SysFont("Arial", 45).render("Login Information:", True, (220, 60, 40)), (450, 325))
+    screen.blit(pygame.font.SysFont("Arial", 45).render("Login Information:", True, (220, 60, 40)), (440, 325))
     for i in range(1, 6):
-        screen.blit(pygame.font.SysFont("Arial", 30).render(inf[i], True, (150, 150, 150)),(550, 50*i + 375))
+        screen.blit(pygame.font.SysFont("Arial", 30).render(inf[i], True, (150, 150, 150)),(570, 50*i + 375))
         screen.blit(pygame.font.SysFont("Arial", 30).render(inf1[i], True, (150, 150, 150)),(400, 50*i + 375))
 def Over():
     global ans3, prog, prog3
@@ -331,13 +333,13 @@ def request():
     abc.mainloop()
     prog= prog3= 0
 def draw(rect, text, is_button, txtsize):
-    global prog, n, prog1, prog3,dtb, btd4,a_,b_,c_
+    global prog, n, prog1, prog3,dtb, btd4,a_,b_,c_,ipress
     if rect.collidepoint((m_x,m_y)) and is_button:
         b = buttonp1.collidepoint((m_x,m_y))
         if b and int(age_input) < 18: screen.blit(pygame.font.SysFont(None,33).render("NOT ALLOWED for your age!(ONLY 18+)",True,(255,0,0)), (15,350))
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button==1 and n==0:
-                if bk.collidepoint((m_x,m_y)): prog=prog3= prog1= 0
+                if bk.collidepoint((m_x,m_y)): prog=prog3= prog1= 0;ipress=False
                 else:
                     prog += 1
                     for name, rect in btd.items():
@@ -417,14 +419,16 @@ input_BG = list_BG[blood_group_input].split("_")
 askqna = ["YES","NO","", "BACK","DIET PLAN"]
 rec = pygame.font.SysFont("Arial", 30).render("RECOMMENDED OPTION:",True,(75,75,75))
 on =None
-font1 = pygame.font.SysFont("Arial", 25)
-font2 = pygame.font.SysFont("Arial", 23)
+font1 = pygame.font.SysFont("Arial", 20)
+font2 = pygame.font.SysFont("Arial", 20)
 font3 = pygame.font.SysFont(None,40)
 font4 = pygame.font.SysFont(None,30)
 screen = pygame.display.set_mode((width, height))
 bx,bdy=0,70
-print(BMI)
+ipress=False
 while running and run and run1:
+
+#--------Animation Logic--------
     a_ += d_
     b_ += f_
     c_ += g_
@@ -437,14 +441,21 @@ while running and run and run1:
     elif c_ >= 3:g_ = -g_
     if soscy <= 0:sosci = abs(sosci)
     elif soscy >= 20:sosci = - sosci
+#-------------------------------
+
+#-------event, key and mouse detection-------
     k = pygame.key.get_pressed()
+    m_x, m_y = pygame.mouse.get_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or k[pygame.K_ESCAPE]:
             running = False
-    m_x, m_y = pygame.mouse.get_pos()
+#--------------------------------------------
+
     screen.fill((0, 0, 0))
-    if prog == 0: Title(); ans1 = ans2 = ans3 = ""
-    else:
+    if k[pygame.K_i]: ipress=True
+    if prog == 0: Title(); ans1 = ans2 = ans3 = "" #Title screen
+    else:                                          #Any screen other than title screen
+#------------------------------drawing Buttons--------------------------------------
         if prog1 == "Blood Support":
             for qna in range(0,4):draw(ask[qna],bldqna[qna],isqna[qna],qnas[qna])
         elif prog1 == "Physical Fitness":
@@ -456,20 +467,28 @@ while running and run and run1:
                 for qna in range(0,4):draw(ask[qna],dtqna[qna],isqna[qna],qnas[qna])
             else:
                 for qna in range(0,5):draw(ask[qna],dtqna[qna],isqna[qna],qnas[qna])
-        elif prog1 == "About(i)": showinf()
+#------------------------------------------------------------------------------------
+        elif (prog1 == "About(i)") or ipress: showinf() #showing information
         if prog3 == "REQUEST" and prog1 == "Blood Support": request()
-        if prog3 == "DONATE" and prog1 == "Blood Support": donate()
-        if prog1 == "Physical Fitness":
+        elif prog3 == "DONATE" and prog1 == "Blood Support": donate()
+
+#-------------------------------Physical Fitness QNA---------------------------------
+        elif prog1 == "Physical Fitness":
             try:
                 if prog3 == "YES":
                     ans1 = ans1 + ans_book2[prog-1]
                     prog3 = 0
                 askqna = ["YES","NO",mcq["Physical Fitness"][prog], "BACK"]
-            except: PHans()
-        if prog1 == "Diet Control":
+            except: 
+                ans1 = ans1 + "stay fit!"
+                PHans()
+#------------------------------------------------------------------------------------
+
+#---------------------------------Diet Control QNA-----------------------------------
+        elif prog1 == "Diet Control":
             if BMI < 18.5: on = by
             elif BMI > 24.9: on = bn
-            else: on = dc;bx=-250;bdy=0
+            else: on = dc;bx=-270;bdy=0
             try:
                 if prog ==1:screen.blit(rec, (rec.get_rect(center=on.center).x+bx,rec.get_rect(center=on.center).y - bdy ))
             except:pass
@@ -481,173 +500,25 @@ while running and run and run1:
                         ans2 = ans2 + underans[prog-1]
                         dtb = 0
                     dtqna = ["YES","NO",mcq["Diet Control"]["UNDER"][prog-1], "BACK"]
-                except: Under()
+                except: 
+                    ans2=ans2+"stay healthy!"
+                    Under()
             elif prog3 == "OVER":
                 try:
                     if dtb == "YES":
                         ans3 = ans3 + overans[prog-2]
                         dtb = 0
                     dtqna = ["YES","NO",mcq["Diet Control"]["OVER"][prog-1], "BACK"]
-                except: Over()
+                except: 
+                    ans3=ans3+"stay healthy!"
+                    Over()
             else:
                 dtqna = ["UNDER","OVER","Are you under or over weight?", "BACK","DIET PLAN"]
                 ans2 = ans3 = ""
             btd4 = dict(zip(dtqna,ask))
+#-----------------------------------------------------------------------------------
+
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
 feedback()
-'''Prerequisites & Guide to Setup Assessment Platform
-To ensure smooth participation in AI VidyaSetu 1.0, all schools and teams must complete
-the following prerequisites at least one day before the competition:
-1. Mettl Mercer Installation
-Download and install the Mettl Secure Browser (Mercer | Mettl) application.
-Official download link: https://tests.mettl.com/v2/msb-download-windows-new
-Ensure the application is properly installed and tested on the system prior to the event.
-A step-by-step video guide has also been shared to assist with installation and setup.
-Participants must watch and follow the instructions carefully.
-2. System Requirements
-A laptop/desktop with:
-Minimum 2 GB RAM and updated operating system.
-Stable internet connection (minimum 1 Mbps recommended).
-Functional webcam and microphone (compulsory for proctoring).
-Disable any third-party applications or pop-up blockers that may interfere with the
-assessment platform.
-3. Pre-Check
-Perform a system compatibility test once the Mettl Mercer browser is installed.
-Ensure that the camera, microphone, and screen sharing permissions are working
-correctly.
-Schools must ensure that all participant systems are tested at least one day before the
-competition.
-4. Login Guidelines
-Use only the official credentials shared by the organizers.
-Login must be done on time; early logout will still be treated as an attempt.
-No re-logins or reattempts will be allowed once the test has started.
-Guideline Video for setup:
-https://drive.google.com/file/d/1UswMGZbuMrKaCWa3jbAJNfTGNYJMTfmV/view?
-usp=sharing'''
-'''Guideline Video for setup:
-https://drive.google.com/file/d/1UswMGZbuMrKaCWa3jbAJNfTGNYJMTfmV/view?
-usp=sharing4
-Ai VidyaSetu 1.0 2025 Guideline
-Proctoring & Misconduct Rules
-All assessments will be strictly proctored using webcam, audio and screen-tracking
-software to ensure fairness and transparency.
-Participants must keep their cameras and microphones active throughout the
-assessment.
-Any attempt to disable, manipulate or obstruct the proctoring system will be treated
-as misconduct.
-If a team logs in and exits early, the attempt will still be considered valid and recorded
-as attempted.
-In case of misconduct, requests to the organizing committee for revocation of the
-decision will not be entertained under any circumstances.
-The final decision in all matters related to AI VidyaSetu 1.0 will rest solely with the
-Organizing Committee and shall be binding on all participants and schools.
-What Constitutes Misconduct
-Misconduct includes, but is not limited to:
-Use of unauthorized devices such as mobile phones, tablets, smartwatches or
-hidden notes.
-Seeking or providing external assistance from mentors, teachers, friends, or online
-resources.
-Discussion between two or more teams during the competition, whether inside or
-outside the examination room.
-Dishonest collaboration or plagiarism, including copying answers or solutions.
-Disruptive behavior, such as creating noise, disturbing other participants, or
-arguing with invigilators/organizers.
-Tampering with system setup or software, including attempting to bypass
-proctoring mechanisms.
-Non-compliance with instructions from the invigilator or organizing team.
-Misrepresentation of identity, such as one participant attempting to compete on
-behalf of another.
-Penalties
-Any misconduct by any team from a school will result in the disqualification of the
-entire school from that stage of AI VidyaSetu 1.0.
-24
-Dos
-Adherence to Rules – Follow all competition rules, instructions, and schedules strictly.
-Fair Participation–Ensure that every team member contributes equally and responsibly.
-Professional Conduct – Maintain discipline, integrity and respect towards invigilators,
-peers, and organizers.
-System Readiness – Check your laptop/system, internet connectivity, webcam, and
-microphone in advance to avoid technical issues during the competition.
-Timely Submissions – Submit all responses and solutions exclusively through the official
-AI VidyaSetu 1.0 platform before deadlines.
-Reporting Issues –
-In case of a natural hazard, submit verifiable proof within 48 hours via the AI
-VidyaSetu 1.0 Support Box.
-In case of a technical glitch or system failure, submit valid proof within 48 hours
-through the AI VidyaSetu 1.0 official webpage.
-Proper Environment – Sit in a quiet, well-lit space with minimal disturbances and keep
-your surroundings free of books, notes, or unrelated materials.
-Identity Verification – Keep a valid school ID or authorization card ready for verification
-if requested.
-Read Instructions Carefully – Go through the guidelines and competition format before
-starting the round to avoid errors.
-Cooperation – Always cooperate with the invigilator and organizing team for smooth
-conduct of the event.
-Don’ts
-No Unauthorized Devices – Do not use mobile phones, smartwatches, tablets, or other
-electronic gadgets during the competition.
-No External Help – Do not seek assistance from mentors, teachers, parents, or online
-resources.
-No Collaboration with Other Teams – Do not communicate, share answers, or discuss
-strategies with participants outside your team.
-No Cheating/Plagiarism – Do not copy solutions or attempt to replicate someone else’s
-work.
-No Misuse of Time – Do not delay submissions or attempt to exploit system loopholes.
-No Disruption – Do not engage in arguments, noise-making, or behavior that disturbs
-other teams.
-No Switching Seats/Systems Without Permission – Remain at your assigned system and
-avoid unnecessary movement during the assessment.
-i.No Tampering – Do not attempt to alter, disable, or interfere with the proctoring
-software.
-ii.No Identity Misuse – Do not allow another individual to compete on your behalf.
-3
-Ai VidyaSetu 1.0 2025 Team Guideline
-Guidelines for Teams4 4
-Ai VidyaSetu 1.0 2025 Guideline
-Guidelines for Schools
-The Principal shall be responsible for ensuring that the school and its participants strictly
-adhere to all the prescribed Dos and Don’ts.
-Dos
-Appoint an Invigilator – Ensure the presence of a non-technical invigilator during the
-Preliminary and Regional Rounds.
-System & Infrastructure Readiness –
-Provide functional laptops/systems with updated software.
-Ensure stable internet connectivity and backup options where possible.
-Arrange a quiet, distraction-free environment for teams.
-Pre-Checks – Test all systems, webcams and microphones before the round begins to
-avoid disruptions.
-Fair Monitoring – The invigilator should actively supervise the competition and ensure all
-teams comply with rules.
-Neutral Role of Invigilator – The invigilator must remain impartial and act only as a
-monitor, not as a guide or helper.
-Reporting Misconduct – Any irregularities, malpractice or suspicious activity must be
-reported immediately to the AI VidyaSetu 1.0 organizing committee.
-Supportive Environment – Provide necessary logistical support (seating, power backup,
-etc.) to ensure smooth participation.
-Maintain Documentation – Keep attendance records, system checklists and incident
-reports ready for reference if required.
-Emergency Protocols – Be prepared with a contingency plan in case of power failure,
-internet outage or natural hazard affecting the school.
-Encourage Discipline – Guide students in advance to follow ethical practices, digital
-etiquette and competition protocols.
-Don’ts
-No Assistance to Teams – Invigilators and teachers must not provide any hints, help or
-clarifications during the competition.
-No Biased Supervision – Schools must not allow favoritism of any team.
-No Technical Interference – Schools must not tamper with or attempt to bypass the
-proctoring and monitoring system.
-No Unauthorized Access – Only designated teams and invigilators should be present in
-the competition room; outsiders must not be allowed.
-No Disturbances – Avoid making announcements, loud noises, or conducting parallel
-activities during the rounds.
-No Manipulation of Results – Schools must not attempt to influence or interfere in the
-evaluation or judging process.
-No Negligence – Failure to arrange proper systems, invigilators, or discipline may result in
-disqualification of the school.
-No Ignoring Reports – Do not delay reporting technical failures to the organizers.
-No Unauthorized Materials – Do not allow students to keep books, notes or other
-materials near their systems.
-No Identity Misuse – Schools must not permit proxy participation (a student competing
-under another student’s name).4 '''
